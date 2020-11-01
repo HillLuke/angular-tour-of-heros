@@ -1,10 +1,16 @@
-<!-- UpperCasePipe | uppercase -->
-<!-- pipes are a good way to format strings, currenty, dates etc -->
-<h2>{{hero.name | uppercase}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div>
-    <label>name:
-        <!-- [(ngModel)] is Angular's two-way data binding syntax -->
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
-  </div>
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!-- *ngFor is Angular's repeater directive. It repeats the host element for each element in a list. -->
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
+<div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+      </label>
+    </div>
+</div>

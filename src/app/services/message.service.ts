@@ -1,3 +1,4 @@
+// tslint:disable: typedef
 import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
 
@@ -6,12 +7,9 @@ import { timer } from 'rxjs';
 })
 export class MessageService {
   messages: string[] = [];
-  timer = timer(3000);
 
   add(message: string) {
     this.messages.push(message);
-    // Remove the message after 3 seconds - probably not the best way to do it
-    this.timer.subscribe((val) => {this.removeFirst();});
   }
 
   clear() {
@@ -19,6 +17,8 @@ export class MessageService {
   }
 
   removeFirst(){
-    this.messages.shift();
+    if (Array.isArray(this.messages) && this.messages.length) {
+      this.messages.shift();
+    }
   }
 }

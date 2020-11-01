@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../message.service';
+import { timer } from 'rxjs';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-messages',
@@ -7,10 +8,15 @@ import { MessageService } from '../message.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
+  timer = timer(3000, 3000);
 
   constructor(public messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.timer.subscribe((val) => {this.removeFirstMessage(); });
   }
 
+  removeFirstMessage(): void{
+    this.messageService.removeFirst();
+  }
 }

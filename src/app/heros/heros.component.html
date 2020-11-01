@@ -1,0 +1,10 @@
+<!-- UpperCasePipe | uppercase -->
+<!-- pipes are a good way to format strings, currenty, dates etc -->
+<h2>{{hero.name | uppercase}} Details</h2>
+<div><span>id: </span>{{hero.id}}</div>
+<div>
+    <label>name:
+        <!-- [(ngModel)] is Angular's two-way data binding syntax -->
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>

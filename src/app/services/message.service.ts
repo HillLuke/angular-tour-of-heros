@@ -1,6 +1,5 @@
 // tslint:disable: typedef
 import { Injectable } from '@angular/core';
-import { timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

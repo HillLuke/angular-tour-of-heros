@@ -29,4 +29,10 @@ export class HeroDetailComponent implements OnInit {
   back(): void {
     this.location.back();
   }
+
+  save(): void {
+    // Subscribe callback is called after updateHero
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.back());
+  }
 }
